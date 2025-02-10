@@ -1,0 +1,3 @@
+LE get next line
+fonctionne
+bien

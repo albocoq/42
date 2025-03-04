@@ -1,0 +1,9 @@
+max
+rot_13
+repeat_alpha
+last_word
+ft_strcpy
+ft_strdup
+ft_list_size
+rev_print
+snake_to_camel

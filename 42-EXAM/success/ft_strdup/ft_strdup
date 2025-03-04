@@ -1,0 +1,6 @@
+char    *ft_strdup(char *src)
+{
+	int count = 0;
+	int src_size = 0;
+
+}

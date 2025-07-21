@@ -6,13 +6,13 @@
 /*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:15:19 by aboussem          #+#    #+#             */
-/*   Updated: 2025/01/02 13:12:51 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/02/24 11:46:03 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	*ft_free_all(char **matrix)
+static void	*ft_free_map(char **matrix)
 {
 	int	i;
 
@@ -63,7 +63,7 @@ static char	**ft_mat(char const *s, char c, char **newmat, int i)
 				i++;
 			newmat[y] = (char *)malloc((i - start + 1) * sizeof(char));
 			if (!newmat[y])
-				return (ft_free_all(newmat));
+				return (ft_free_map(newmat));
 			ft_strlcpy(newmat[y], &s[start], i - start + 1);
 			y++;
 		}
@@ -83,7 +83,7 @@ char	**ft_split(char const *s, char c)
 	newmat = (char **)malloc((words_count + 1) * sizeof(char *));
 	if (!newmat)
 	{
-		ft_free_all(newmat);	
+		ft_free_map(newmat);
 		return (NULL);
 	}
 	return (ft_mat(s, c, newmat, 0));

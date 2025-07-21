@@ -6,32 +6,29 @@
 /*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:49:38 by aboussem          #+#    #+#             */
-/*   Updated: 2025/02/03 10:12:50 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:36:47 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_error(void)
-{
-	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);
-}
-void ft_perror(char *text, char *file)
+void	ft_perror(char *text, t_map *map, int all_free)
 {
 	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(text, 2);
-	if (file)
-		ft_putstr_fd(file, 2);
+	if (text)
+		ft_putstr_fd(text, 2);
+	ft_putstr_fd("\n", 2);
+	free_all(map, all_free);
 	exit(EXIT_FAILURE);
 }
 
-void ft_hook(void* param)
+void	ft_hook(void *param)
 {
-	const mlx_t* mlx = param;
-	static int width;
-	static int height;
-	
+	const mlx_t		*mlx;
+	static int		width;
+	static int		height;
+
+	mlx = param;
 	if (!width)
 		width = 0;
 	if (!height)
@@ -42,28 +39,34 @@ void ft_hook(void* param)
 	width = mlx->width;
 }
 
-static void ft_switch(t_map *map, char step)
+static void	ft_switch(t_map *map, char step)
 {
-	static int count;
-	int x_temp;
-	int y_temp;
+	static int	count;
+	int			x_temp;
+	int			y_temp;
+	t_pos		temp;
 
+	if (!count)
+		count = 1;
+	temp.x = 0;
+	temp.y = 0;
 	y_temp = map->elements.character.x;
 	x_temp = map->elements.character.y;
-	removewall(*map, (t_pos){y_temp * 100, x_temp * 100, NULL}, "./texture/floor.png", step);
+	removewall(map,
+		(t_pos){y_temp * 100, x_temp * 100, NULL}, "./texture/floor.png", step);
+	ft_putstr_fd("\nNumber of steps: ", 2);
+	ft_putnbr_fd(count, 2);
 	if (step == 't')
-		count += goup(map, x_temp, y_temp);
+		count += go_up(map, x_temp, y_temp, temp);
 	else if (step == 'b')
-		count += godown(map, x_temp, y_temp);
+		count += go_down(map, x_temp, y_temp, temp);
 	else if (step == 'l')
-		count += goleft(map, x_temp, y_temp);
+		count += go_left(map, x_temp, y_temp, temp);
 	else if (step == 'r')
-		count += goright(map, x_temp, y_temp);
-	ft_putstr_fd("\nNumber of steps: ", 2);		
-	ft_putnbr_fd(count, 2);		
+		count += go_right(map, x_temp, y_temp, temp);
 }
 
-void my_keyhook(mlx_key_data_t keydata, void* param)
+void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_map	*data;
 

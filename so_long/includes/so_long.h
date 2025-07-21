@@ -54,24 +54,34 @@ typedef struct s_checker
 }	t_checker;
 
 // so_long
-void ft_error(void);
-void ft_perror(char *text, char *file);
+void ft_perror(char *text, t_map *map, int all_free);
 void ft_hook(void* param);
 void my_keyhook(mlx_key_data_t keydata, void* param);
 t_map *checkinput(char *file);
-t_mat getfileinfo(char *file, t_mat mat);
-// void	ft_is_posible(t_mat *data, int j, int i, int left);
-// void	ft_check_is_posible(t_map *data);
+t_mat getfileinfo(char *file, t_map *map);
+void	ft_check_is_posible(t_map *data);
+void check_extension(char *command, t_map *map);
+void free_all(t_map	*map, int all_free);
+void free_map(char **map);
 
 // textures
-mlx_image_t* createpers(mlx_t* mlx, t_pos pos, mlx_image_t* last);
-void createwall(mlx_t* mlx, t_pos pos, char *link);
-void removewall(t_map map, t_pos pos, char *link, char step);
+mlx_image_t *createpers(t_pos pos, t_map *map);
+void createwall(t_map *map, t_pos pos, char *link);
+void removewall(t_map *map, t_pos pos, char *link, char step);
+void remove_left_texture(mlx_image_t *img, t_pos pos, t_map *map, int y_temp);
+void remove_right_texture(mlx_image_t *img, t_pos pos, t_map *map, int y_temp);
+void remove_up_texture(mlx_image_t *img, t_pos pos, t_map *map, int x_temp);
+void remove_down_texture(mlx_image_t *img, t_pos pos, t_map *map, int x_temp);
+
 
 // moov
-int goup(t_map *map, int x_temp, int y_temp);
-int godown(t_map *map, int x_temp, int y_temp);
-int goleft(t_map *map, int x_temp, int y_temp);
-int goright(t_map *map, int x_temp, int y_temp);
+int go_up(t_map *map, int x_temp, int y_temp, t_pos temp);
+int go_down(t_map *map, int x_temp, int y_temp, t_pos temp);
+int go_left(t_map *map, int x_temp, int y_temp, t_pos temp);
+int go_right(t_map *map, int x_temp, int y_temp, t_pos temp);
+
+// free
+void	free2d(char **str);
+void	free_remaining_gnl(int fd, char *line);
 
 #endif

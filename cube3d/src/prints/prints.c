@@ -9,6 +9,25 @@ static void print_str_field(const char *label, const char *value)
         printf("%s: (null)\n", label);
 }
 
+static const char *bool_str(bool v)
+{
+    return v ? "true" : "false";
+}
+
+void print_player(const t_player *pl)
+{
+    if (!pl)
+    {
+        printf("[player] (null)\n");
+        return;
+    }
+    printf("[player]\n");
+    printf("  pos: x=%.2f y=%.2f\n", pl->x, pl->y);
+    printf("  keys: up=%s down=%s left=%s right=%s\n",
+           bool_str(pl->key_up), bool_str(pl->key_down),
+           bool_str(pl->key_left), bool_str(pl->key_right));
+}
+
 void print_elements(const t_elements *el)
 {
     if (!el)
@@ -49,16 +68,17 @@ void print_mat(const t_mat *mat)
             else
                 printf("  (null)\n");
         }
+        printf("\n");
     }
     else
     {
-        /* Fallback: print until NULL terminator if height is unknown */
         y = 0;
         while (mat->mat[y])
         {
             printf("  %s", mat->mat[y]);
             y++;
         }
+        printf("\n");
     }
 }
 
@@ -71,6 +91,8 @@ void print_map(const t_map *map)
     }
     printf("================ DEBUG MAP ================\n");
     print_elements(&((t_map *)map)->elements);
+    printf("-------------------------------------------\n");
+    print_player(((t_map *)map)->player);
     printf("-------------------------------------------\n");
     print_mat(&((t_map *)map)->mat);
     printf("===========================================\n");

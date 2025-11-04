@@ -6,7 +6,6 @@ int global_check(char *filename, t_map *map) {
   map->mat.width = 0;
   map->mat.height = 0;
   map->mat.mat = NULL;
-  /* ensure elements pointers are initialized to NULL to avoid freeing garbage */
   map->elements.no = NULL;
   map->elements.so = NULL;
   map->elements.we = NULL;

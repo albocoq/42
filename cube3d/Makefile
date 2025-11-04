@@ -6,7 +6,7 @@
 #    By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 21:50:08 by albocoq           #+#    #+#              #
-#    Updated: 2025/11/02 12:29:57 by albocoq          ###   ########.fr        #
+#    Updated: 2025/11/02 20:15:41 by albocoq          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS =	$(SRCS_DIR)/cube3d.c \
 				$(SRCS_DIR)/init/init_map.c \
+				$(SRCS_DIR)/init/init_game.c \
+				$(SRCS_DIR)/init/init_player.c \
 		    $(SRCS_DIR)/checkers/global_check.c \
 		    $(SRCS_DIR)/checkers/checkers.c \
 				$(SRCS_DIR)/checkers/checker_mat.c \
@@ -49,7 +51,8 @@ SRCS =	$(SRCS_DIR)/cube3d.c \
 				$(SRCS_DIR)/utils/keyhook.c \
 				$(SRCS_DIR)/free/free_splits.c \
 				$(SRCS_DIR)/free/free_all.c \
-				$(SRCS_DIR)/prints/prints.c
+				$(SRCS_DIR)/prints/prints.c \
+				$(SRCS_DIR)/draw/draw.c \
 
 
 OBJS = $(patsubst $(SRCS_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))

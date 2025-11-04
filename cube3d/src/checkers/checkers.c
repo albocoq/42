@@ -61,11 +61,38 @@ int check_elements(t_elements *elements)
   return 0;
 }
 
+int check_correct_elements(t_mat *mat)
+{
+  int found_pos_player = 0;
+
+  for (int i = 0; i < mat->height; i++)
+  {
+    for (int j = 0; j < mat->width; j++)
+    {
+      if (mat->mat[i][j] == 'N' || mat->mat[i][j] == 'S' ||
+          mat->mat[i][j] == 'E' || mat->mat[i][j] == 'W')
+        found_pos_player++;
+    }
+  }
+  if (found_pos_player == 0)
+  {
+    printf("Error: No player starting position found in the map.\n");
+    return 1;
+  } else if (found_pos_player > 1)
+  {
+    printf("Error: Multiple player starting positions found in the map.\n");
+    return 1;
+  }
+  return 0;
+}
+
 int check_inputs(t_map *map)
 {
   if (check_elements(&map->elements) != 0)
     return 1;
   if (check_mat(&map->mat) != 0)
+    return 1;
+  if (check_correct_elements(&map->mat) != 0)
     return 1;
   return 0;
 }

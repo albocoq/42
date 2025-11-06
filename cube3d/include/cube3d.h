@@ -6,12 +6,12 @@
 /*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:00:00 by juanandub         #+#    #+#             */
-/*   Updated: 2025/11/04 11:46:18 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/06 11:45:02 by albocoq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef CUBE3D_H
+# define CUBE3D_H
 # define WIDTH 1280
 # define HEIGHT 720
 # define DEBUG 0
@@ -25,18 +25,22 @@
 # define BLOCK 64
 # define PLAYER_SIZE 20
 
+# define DEFAULT_SPEED 4
+# define MIN_SPEED 1
+# define MAX_SPEED 20
+
 typedef struct s_pos
 {
-	int	x;
-	int y;
-	mlx_image_t* img;
+	mlx_image_t	*img;
+	int			x;
+	int			y;
 }	t_pos;
 
 typedef struct s_mat
 {
 	int		width;
-	int 	height;
-	char 	**mat;
+	int		height;
+	char	**mat;
 }	t_mat;
 
 typedef struct s_elements
@@ -53,71 +57,88 @@ typedef struct s_player
 {
 	float	x;
 	float	y;
-	float angle;
+	float	angle;
+	int		speed;
 
-	bool key_up;
-	bool key_down;
-	bool key_left;
-	bool key_right;
+	bool	key_up;
+	bool	key_down;
+	bool	key_left;
+	bool	key_right;
+	bool	key_plus;
+	bool	key_minus;
 
-	bool left_rotate;
-	bool right_rotate;
-} t_player;
+	bool	left_rotate;
+	bool	right_rotate;
+}	t_player;
 
 typedef struct s_map
 {
-	t_mat mat;
-	t_elements elements;
-	mlx_t* mlx;
+	t_mat		mat;
+	t_elements	elements;
+	mlx_t		*mlx;
 
-	t_player *player;
+	t_player	*player;
 
-	mlx_image_t *img;
-	char *data;
-	int bpp;
-	int size_line;
-	int endian;
+	mlx_image_t	*img_background;
+	mlx_image_t	*img_game;
+	char		*data;
+	int			bpp;
+	int			size_line;
+	int			endian;
 }	t_map;
 
-int init_map(t_map *map, int fd);
-void init_player(t_player *player, t_map *map);
-void move_player(t_player *player, t_map *map);
-int global_check(char *filename, t_map *map);
+int		init_map(t_map *map, int fd);
+void	init_player(t_player *player, t_map *map);
+int		init_mlx(t_map *map);
+int		init_elements(t_elements *elements, char *line);
+void	move_player(t_player *player, t_map *map);
+int		global_check(char *filename, t_map *map);
+
+/* Movement*/
+int		is_wall(t_map *map, int mx, int my);
+int		check_next_move(float new_x, float new_y, t_map *map);
+void	move_up(t_map *map, float c, float s, int sp);
+void	move_down(t_map *map, float c, float s, int sp);
+void	move_left(t_map *map, float c, float s, int sp);
+void	move_right(t_map *map, float c, float s, int sp);
+void	move_player(t_player *player, t_map *map);
 
 /* Checkers */
-int check_commands(char *filename);
-int check_existence_file(char *filename);
-int check_inputs(t_map *map);
-int check_mat(t_mat *mat);
-int check_right_walls(t_mat *mat, int i, int j);
-int check_left_walls(t_mat *mat, int i, int j);
-int check_bottom_walls(t_mat *mat, int i, int j);
-int check_top_walls(t_mat *mat, int i, int j);
+int		check_inputs(t_map *map);
+int		check_mat(t_mat *mat);
+int		check_right_walls(t_mat *mat, int i, int j);
+int		check_left_walls(t_mat *mat, int i, int j);
+int		check_bottom_walls(t_mat *mat, int i, int j);
+int		check_top_walls(t_mat *mat, int i, int j);
 
 /* Freeing */
-void free_splits(char **splits);
+void	free_splits(char **splits);
 void	free_all(t_map *map);
-void clear_image(t_map *map);
-
+void	clear_image(t_map *map);
 
 /* Debug prints */
-void print_elements(const t_elements *el);
-void print_mat(const t_mat *mat);
-void print_map(const t_map *map);
-void print_player(const t_player *pl);
+void	print_elements(const t_elements *el);
+void	print_mat(const t_mat *mat);
+void	print_map(const t_map *map);
+void	print_player(const t_player *pl);
 
 /* Utils */
-int only_whitespace(const char *str);
+int		only_whitespace(const char *str);
 void	my_keyhook(mlx_key_data_t keydata, void *param);
-bool touch(float px, float py, t_map *map);
-float distance(float dx, float dy);
+bool	touch(float px, float py, t_map *map);
+float	distance(float dx, float dy);
+size_t	line_len_no_nl(const char *line);
+char	*dup_trim_ws(const char *s);
+uint32_t	get_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+uint32_t	color_rgba(char *s);
 
 /* Print game */
-int init_game(t_map *map);
-void draw_square(int x, int y, int size, int color, mlx_image_t *img);
+int		init_game(t_map *map);
+void	draw_square(int x, int y, int size, mlx_image_t *img);
 
 /* Draw */
-void draw_map(t_map *map);
-void draw_loop(void *param);
+void	draw_map(t_map *map);
+void	draw_loop(void *param);
+void	draw_background(t_map *map);
 
 #endif

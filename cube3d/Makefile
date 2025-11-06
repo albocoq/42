@@ -6,7 +6,7 @@
 #    By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 21:50:08 by albocoq           #+#    #+#              #
-#    Updated: 2025/11/02 20:15:41 by albocoq          ###   ########.fr        #
+#    Updated: 2025/11/06 10:53:15 by albocoq          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,16 +43,23 @@ SRCS =	$(SRCS_DIR)/cube3d.c \
 				$(SRCS_DIR)/init/init_map.c \
 				$(SRCS_DIR)/init/init_game.c \
 				$(SRCS_DIR)/init/init_player.c \
+				$(SRCS_DIR)/init/init_mlx.c \
+				$(SRCS_DIR)/init/init_element.c \
+				$(SRCS_DIR)/movement/moves.c \
+				$(SRCS_DIR)/movement/move_player.c \
 		    $(SRCS_DIR)/checkers/global_check.c \
 		    $(SRCS_DIR)/checkers/checkers.c \
 				$(SRCS_DIR)/checkers/checker_mat.c \
 				$(SRCS_DIR)/checkers/checker_mat_walls.c \
 				$(SRCS_DIR)/utils/utils.c \
 				$(SRCS_DIR)/utils/keyhook.c \
+				$(SRCS_DIR)/utils/map.c \
+				$(SRCS_DIR)/utils/elements.c \
 				$(SRCS_DIR)/free/free_splits.c \
 				$(SRCS_DIR)/free/free_all.c \
 				$(SRCS_DIR)/prints/prints.c \
 				$(SRCS_DIR)/draw/draw.c \
+				$(SRCS_DIR)/draw/draw_background.c \
 
 
 OBJS = $(patsubst $(SRCS_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
@@ -84,13 +91,10 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(INCS_DIR)/cube3d.h
 clean:
 	@echo "Limpiando archivos objeto..."
 	@$(RM) -r $(OBJS_DIR)
-	@$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
 	@echo "Limpiando ejecutable..."
 	@$(RM) $(NAME)
-	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@rm -rf $(LIBMLX_BUILD)
 
 re: fclean all
 

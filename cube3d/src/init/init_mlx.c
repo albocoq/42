@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_splits.c                                      :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 11:28:58 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/05 11:31:53 by albocoq          ###   ########.fr       */
+/*   Created: 2025/11/05 10:32:25 by albocoq           #+#    #+#             */
+/*   Updated: 2025/11/05 10:34:26 by albocoq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	free_splits(char **splits)
+int	init_mlx(t_map *map)
 {
-	int	i;
-
-	if (!splits)
-		return ;
-	i = 0;
-	while (splits[i])
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
+	if (DEBUG)
+		map->mlx = mlx_init(map->mat.width * BLOCK, map->mat.height * BLOCK,
+				"cube3d albo", true);
+	else
+		map->mlx = mlx_init(WIDTH, HEIGHT, "cube3d albo", true);
+	if (!map->mlx)
 	{
-		free(splits[i]);
-		i++;
+		printf("Error: MLX initialization failed.\n");
+		free_all(map);
+		return (1);
 	}
-	free(splits);
+	return (0);
 }

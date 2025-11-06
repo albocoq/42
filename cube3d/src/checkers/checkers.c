@@ -1,98 +1,95 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checkers.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/05 11:45:26 by albocoq           #+#    #+#             */
+/*   Updated: 2025/11/05 12:00:24 by albocoq          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube3d.h"
 
-int check_commands(char *filename)
+static int	check_elements(t_elements *elements, int i)
 {
-  int i;
-  char **file;
+	const char	*paths[4];
+	int			fd;
 
-  file = ft_split(filename, '.');
-  i = 0;
-  if (!file) {
-    printf("Error: Unable to split filename.\n");
-    i = 1;
-  } else if (!file[1]) {
-    printf("Error: Invalid file format: <%s>.cub\n", filename);
-    i = 1;
-  } else if (ft_strcmp(file[1], "cub") != 0) {
-    printf("Error: Invalid file format: <%s>.cub\n", filename);
-    i = 1;
-  }
-  free_splits(file);
-  return i;
+	paths[0] = elements->no;
+	paths[1] = elements->so;
+	paths[2] = elements->we;
+	paths[3] = elements->ea;
+	while (i < 4)
+	{
+		if (!paths[i] || paths[i][0] == '\0')
+		{
+			printf("Error: Texture path is missing.\n");
+			return (1);
+		}
+		fd = open(paths[i], O_RDONLY);
+		if (fd < 0)
+		{
+			printf("Error: Texture file <%s> does not exist.\n", paths[i]);
+			return (1);
+		}
+		close(fd);
+		i++;
+	}
+	return (0);
 }
 
-int check_existence_file(char *filename)
+static int	correct_elements_error(int found_pos_player)
 {
-  int fd;
-
-  fd = open(filename, O_RDONLY);
-  if (fd < 0)
-    printf("Error: File <%s> does not exist or cannot be opened.\n", filename);
-  return fd;
+	if (found_pos_player == 0)
+	{
+		printf("Error: No player starting position found in the map.\n");
+		return (1);
+	}
+	else if (found_pos_player > 1)
+	{
+		printf("Error: Multiple player starting positions found in the map.\n");
+		return (1);
+	}
+	return (0);
 }
 
-int check_elements(t_elements *elements)
+static int	check_correct_elements(t_mat *mat)
 {
-  const char *paths[4];
-  int fd;
-  int i;
+	int	i;
+	int	j;
+	int	found_pos_player;
 
-  i = 0;
-  paths[0] = elements->no;
-  paths[1] = elements->so;
-  paths[2] = elements->we;
-  paths[3] = elements->ea;
-  while (i < 4)
-  {
-    if (!paths[i] || paths[i][0] == '\0')
-    {
-      printf("Error: Texture path is missing.\n");
-      return 1;
-    }
-    fd = open(paths[i], O_RDONLY);
-    if (fd < 0)
-    {
-      printf("Error: Texture file <%s> does not exist or cannot be opened.\n", paths[i]);
-      return 1;
-    }
-    close(fd);
-    i++;
-  }
-  return 0;
+	i = 0;
+	found_pos_player = 0;
+	while (i < mat->height)
+	{
+		j = 0;
+		while (j < mat->width)
+		{
+			if (mat->mat[i][j] == 'N' || mat->mat[i][j] == 'S' ||
+				mat->mat[i][j] == 'E' || mat->mat[i][j] == 'W')
+				found_pos_player++;
+			j++;
+		}
+		i++;
+	}
+	if (correct_elements_error(found_pos_player) != 0)
+		return (1);
+	return (0);
 }
 
-int check_correct_elements(t_mat *mat)
+int	check_inputs(t_map *map)
 {
-  int found_pos_player = 0;
+	int	i;
 
-  for (int i = 0; i < mat->height; i++)
-  {
-    for (int j = 0; j < mat->width; j++)
-    {
-      if (mat->mat[i][j] == 'N' || mat->mat[i][j] == 'S' ||
-          mat->mat[i][j] == 'E' || mat->mat[i][j] == 'W')
-        found_pos_player++;
-    }
-  }
-  if (found_pos_player == 0)
-  {
-    printf("Error: No player starting position found in the map.\n");
-    return 1;
-  } else if (found_pos_player > 1)
-  {
-    printf("Error: Multiple player starting positions found in the map.\n");
-    return 1;
-  }
-  return 0;
-}
-
-int check_inputs(t_map *map)
-{
-  if (check_elements(&map->elements) != 0)
-    return 1;
-  if (check_mat(&map->mat) != 0)
-    return 1;
-  if (check_correct_elements(&map->mat) != 0)
-    return 1;
-  return 0;
+	i = 0;
+	if (check_elements(&map->elements, i) != 0)
+		return (1);
+	if (check_mat(&map->mat) != 0)
+		return (1);
+	if (check_correct_elements(&map->mat) != 0)
+		return (1);
+	return (0);
 }

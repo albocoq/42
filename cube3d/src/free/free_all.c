@@ -1,48 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_all.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/05 11:29:31 by albocoq           #+#    #+#             */
+/*   Updated: 2025/11/06 10:49:46 by albocoq          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube3d.h"
+
+void	free_elements(t_elements *elements)
+{
+	if (elements->no)
+		free(elements->no);
+	if (elements->so)
+		free(elements->so);
+	if (elements->we)
+		free(elements->we);
+	if (elements->ea)
+		free(elements->ea);
+	if (elements->f)
+		free(elements->f);
+	if (elements->c)
+		free(elements->c);
+}
 
 void	free_all(t_map *map)
 {
+	int	i;
+
+	i = 0;
 	if (!map)
-		return;
+		return ;
 	if (map->mlx)
 		mlx_terminate(map->mlx);
-  if (map->player)
-    free(map->player);
-  if (map->mat.mat)
-  {
-    for (int i = 0; i < map->mat.height; i++)
-      free(map->mat.mat[i]);
-    free(map->mat.mat);
-  }
-  if (map->elements.no)
-    free(map->elements.no);
-  if (map->elements.so)
-    free(map->elements.so);
-  if (map->elements.we)
-    free(map->elements.we);
-  if (map->elements.ea)
-    free(map->elements.ea);
-  if (map->elements.f)
-    free(map->elements.f);
-  if (map->elements.c)
-    free(map->elements.c);
+	if (map->player)
+		free(map->player);
+	if (map->mat.mat)
+	{
+		while (i < map->mat.height)
+		{
+			free(map->mat.mat[i]);
+			i++;
+		}
+		free(map->mat.mat);
+	}
+	free_elements(&map->elements);
 	free(map);
 }
 
-void clear_image(t_map *map)
+void	clear_image(t_map *map)
 {
-  int i;
+	int	width;
+	int	height;
+	int	total_pixels;
 
-  i = 0;
-
-  while (i < HEIGHT)
-  {
-    int j = 0;
-    while (j < WIDTH)
-    {
-      mlx_put_pixel(map->img, j, i, 0x00000000);
-      j++;
-    }
-    i++;
-  }
+	if (DEBUG)
+	{
+		width = map->mat.width * BLOCK;
+		height = map->mat.height * BLOCK;
+	}
+	else
+	{
+		width = WIDTH;
+		height = HEIGHT;
+	}
+	total_pixels = width * height * sizeof(int32_t);
+	ft_memset(map->img_game->pixels, 0, total_pixels);
 }

@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_splits.c                                      :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 11:28:58 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/05 11:31:53 by albocoq          ###   ########.fr       */
+/*   Created: 2025/11/05 10:43:28 by albocoq           #+#    #+#             */
+/*   Updated: 2025/11/05 11:10:53 by albocoq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	free_splits(char **splits)
+size_t	line_len_no_nl(const char *line)
 {
-	int	i;
+	size_t	len;
 
-	if (!splits)
-		return ;
-	i = 0;
-	while (splits[i])
-	{
-		free(splits[i]);
-		i++;
-	}
-	free(splits);
+	len = ft_strlen(line);
+	if (len > 0 && line[len - 1] == '\n')
+		return (len - 1);
+	return (len);
 }

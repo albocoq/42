@@ -1,4 +1,4 @@
-#include "My_Awesome_PhoneBook.hpp"
+#include "PhoneBook.hpp"
 
 int main(void)
 {
@@ -9,7 +9,10 @@ int main(void)
   while (1) {
     command.clear();
     std::cout << "What do you want to do ? ADD | SEARCH | EXIT" << std::endl;
-    std::getline(std::cin, command);
+    if (!std::getline(std::cin, command)) {
+      std::cout << "EOF. Closing the program." << std::endl;
+      break;
+    }
 
     if (command == "ADD") {
       addCommand(phone, phone_size);

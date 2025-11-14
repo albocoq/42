@@ -6,11 +6,11 @@
 #    By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/05 15:25:52 by aboussem          #+#    #+#              #
-#    Updated: 2025/11/14 10:15:14 by albocoq          ###   ########.fr        #
+#    Updated: 2025/11/14 11:18:35 by albocoq          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = My_Awesome_PhoneBook
+NAME    = PhoneBook
 CC      = c++
 CFLAGS  = -Wall -Werror -Wextra -std=c++98
 RM      = rm -f

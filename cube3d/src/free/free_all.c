@@ -6,7 +6,7 @@
 /*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:29:31 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/06 10:49:46 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/07 11:43:18 by albocoq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,11 @@ void	free_all(t_map *map)
 
 void	clear_image(t_map *map)
 {
-	int	width;
-	int	height;
 	int	total_pixels;
 
-	if (DEBUG)
-	{
-		width = map->mat.width * BLOCK;
-		height = map->mat.height * BLOCK;
-	}
-	else
-	{
-		width = WIDTH;
-		height = HEIGHT;
-	}
-	total_pixels = width * height * sizeof(int32_t);
+	if (!map || !map->img_game)
+		return ;
+	total_pixels = (int)map->img_game->width * (int)map->img_game->height
+		* (int) sizeof(int32_t);
 	ft_memset(map->img_game->pixels, 0, total_pixels);
 }

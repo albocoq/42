@@ -6,20 +6,20 @@
 /*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:00:00 by juanandub         #+#    #+#             */
-/*   Updated: 2025/11/06 11:45:02 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/07 12:14:38 by albocoq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1920
+# define HEIGHT 1080
 # define DEBUG 0
-
 # include "../libft/includes/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 
 # define PI 3.14159265358979323846
 # define BLOCK 64
@@ -43,6 +43,33 @@ typedef struct s_mat
 	char	**mat;
 }	t_mat;
 
+typedef struct s_camera
+{
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
+}	t_camera;
+
+typedef struct s_ray
+{
+	double	rdx;
+	double	rdy;
+	int		mapx;
+	int		mapy;
+	double	ddx;
+	double	ddy;
+	int		stepx;
+	int		stepy;
+	double	sdx;
+	double	sdy;
+	int		side;
+	double	perp;
+	int		line_h;
+	int		draw_start;
+	int		draw_end;
+}		t_ray;
+
 typedef struct s_elements
 {
 	char	*no;
@@ -52,6 +79,18 @@ typedef struct s_elements
 	char	*f;
 	char	*c;
 }	t_elements;
+
+typedef struct s_textures
+{
+	mlx_texture_t	*no_tx;
+	mlx_texture_t	*so_tx;
+	mlx_texture_t	*we_tx;
+	mlx_texture_t	*ea_tx;
+	mlx_image_t		*no_img;
+	mlx_image_t		*so_img;
+	mlx_image_t		*we_img;
+	mlx_image_t		*ea_img;
+}	t_textures;
 
 typedef struct s_player
 {
@@ -78,6 +117,7 @@ typedef struct s_map
 	mlx_t		*mlx;
 
 	t_player	*player;
+	t_textures	textures;
 
 	mlx_image_t	*img_background;
 	mlx_image_t	*img_game;
@@ -86,6 +126,12 @@ typedef struct s_map
 	int			size_line;
 	int			endian;
 }	t_map;
+
+typedef struct s_texspan
+{
+	const mlx_texture_t	*tx;
+	int					tex_x;
+}	t_texspan;
 
 int		init_map(t_map *map, int fd);
 void	init_player(t_player *player, t_map *map);
@@ -116,12 +162,6 @@ void	free_splits(char **splits);
 void	free_all(t_map *map);
 void	clear_image(t_map *map);
 
-/* Debug prints */
-void	print_elements(const t_elements *el);
-void	print_mat(const t_mat *mat);
-void	print_map(const t_map *map);
-void	print_player(const t_player *pl);
-
 /* Utils */
 int		only_whitespace(const char *str);
 void	my_keyhook(mlx_key_data_t keydata, void *param);
@@ -129,16 +169,40 @@ bool	touch(float px, float py, t_map *map);
 float	distance(float dx, float dy);
 size_t	line_len_no_nl(const char *line);
 char	*dup_trim_ws(const char *s);
-uint32_t	get_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-uint32_t	color_rgba(char *s);
+int		load_textures(t_map *map);
 
 /* Print game */
 int		init_game(t_map *map);
 void	draw_square(int x, int y, int size, mlx_image_t *img);
 
 /* Draw */
-void	draw_map(t_map *map);
 void	draw_loop(void *param);
 void	draw_background(t_map *map);
+void	draw_walls_textured(t_map *map);
+
+/* Raycasting helpers */
+void	build_camera_from_player(const t_player *player, t_camera *cam);
+void	set_ray_dir(int x, const t_camera *cam, t_ray *ray);
+void	set_ray_steps(double posx, double posy, t_ray *ray);
+int		perform_dda_and_compute_perp(const t_map *map,
+			t_ray *ray, double posx, double posy);
+int		step_until_hit(const t_map *map, t_ray *ray);
+void	compute_perp_distance(t_ray *ray, double posx, double posy);
+void	compute_line_bounds(t_ray *ray);
+int		ray_map_is_wall(const t_map *map, int mx, int my);
+int		compute_tex_x_for_column(const t_map *map, const t_ray *ray,
+			const mlx_texture_t *tx);
+
+/* Texture helpers */
+void	sample_tex_rgba(const mlx_texture_t *tx, int u, int v,
+			uint8_t rgba[4]);
+void	shade_if_needed(uint8_t rgba[4], const t_ray *ray);
+
+/* Textures */
+int		load_textures(t_map *map);
+void	destroy_textures(t_map *map);
+
+int		get_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+int		color_rgba(char *s);
 
 #endif

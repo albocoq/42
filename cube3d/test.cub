@@ -1,11 +1,11 @@
-NO ./src/textures/bluestone.xpm
-SO ./src/textures/orange_brick.xpm
-WE ./src/textures/purplestone.xpm
-EA ./src/textures/greystone.xpm
+NO ./src/textures/img_no.png
+SO ./src/textures/img_so.png
+WE ./src/textures/img_we.png
+EA ./src/textures/img_ea.png
 
 
 
-F 220,100,0
+F 220,100,40
 C 225,30,0
 
 

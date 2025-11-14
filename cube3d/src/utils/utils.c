@@ -6,7 +6,7 @@
 /*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:08:59 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/06 11:44:19 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/07 12:14:14 by albocoq          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,17 @@ float	distance(float dx, float dy)
 	return (sqrtf(dx * dx + dy * dy));
 }
 
-uint32_t get_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+int	get_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
 	return ((r << 24) | (g << 16) | (b << 8) | a);
 }
 
-uint32_t color_rgba(char *s)
+int	color_rgba(char *s)
 {
-	char **split_color;
+	char		**split_color;
+	uint8_t		r;
+	uint8_t		g;
+	uint8_t		b;
 
 	split_color = ft_split(s, ',');
 	if (!split_color || !split_color[0] || !split_color[1] || !split_color[2])
@@ -60,9 +63,9 @@ uint32_t color_rgba(char *s)
 		free_splits(split_color);
 		return (0);
 	}
-	uint8_t r = (uint8_t)ft_atoi(split_color[0]);
-	uint8_t g = (uint8_t)ft_atoi(split_color[1]);
-	uint8_t b = (uint8_t)ft_atoi(split_color[2]);
+	r = (uint8_t)ft_atoi(split_color[0]);
+	g = (uint8_t)ft_atoi(split_color[1]);
+	b = (uint8_t)ft_atoi(split_color[2]);
 	free_splits(split_color);
 	return (get_rgba(r, g, b, 255));
 }

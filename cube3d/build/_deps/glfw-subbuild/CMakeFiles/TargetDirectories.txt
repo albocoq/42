@@ -1,3 +1,0 @@
-/home/albocoq/dev/42/cube3d/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate.dir
-/home/albocoq/dev/42/cube3d/build/_deps/glfw-subbuild/CMakeFiles/edit_cache.dir
-/home/albocoq/dev/42/cube3d/build/_deps/glfw-subbuild/CMakeFiles/rebuild_cache.dir

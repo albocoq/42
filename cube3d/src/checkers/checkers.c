@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:45:26 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/05 12:00:24 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static int	check_elements(t_elements *elements, int i)
 {

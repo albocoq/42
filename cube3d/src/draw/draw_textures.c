@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 16:29:55 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/11/07 12:14:54 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	draw_textured_span(t_map *map, int x, const t_ray *ray,
 			t_texspan span)

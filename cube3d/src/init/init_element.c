@@ -3,41 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   init_element.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 10:44:27 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/05 10:56:00 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 13:54:33 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
-static void	assign_texture(t_elements *elements, char *line, char *tmp)
+static int	assign_texture(t_elements *elements, char *line, char *tmp)
 {
 	if (line[0] == 'N' && line[1] == 'O')
 	{
 		if (elements->no)
-			free(elements->no);
+			return (printf("Error: Duplicate key NO founded\n"), 1);
 		elements->no = tmp;
 	}
 	else if (line[0] == 'S' && line[1] == 'O')
 	{
 		if (elements->so)
-			free(elements->so);
+			return (printf("Error: Duplicate key SO founded\n"), 1);
 		elements->so = tmp;
 	}
 	else if (line[0] == 'W' && line[1] == 'E')
 	{
 		if (elements->we)
-			free(elements->we);
+			return (printf("Error: Duplicate key WE founded\n"), 1);
 		elements->we = tmp;
 	}
 	else if (line[0] == 'E' && line[1] == 'A')
 	{
 		if (elements->ea)
-			free(elements->ea);
+			return (printf("Error: Duplicate key EA founded\n"), 1);
 		elements->ea = tmp;
 	}
+	return (0);
 }
 
 static int	handle_texture(t_elements *elements, char *line)
@@ -51,7 +52,8 @@ static int	handle_texture(t_elements *elements, char *line)
 	tmp = dup_trim_ws(p);
 	if (!tmp)
 		return (0);
-	assign_texture(elements, line, tmp);
+	if (assign_texture(elements, line, tmp) != 0)
+		return (2);
 	return (0);
 }
 

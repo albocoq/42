@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.c                                          :+:      :+:    :+:   */
+/*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 18:37:40 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/06 19:48:21 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static mlx_texture_t	*load_texture_file(const char *path)
 {

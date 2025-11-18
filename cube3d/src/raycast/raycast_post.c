@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_post.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 20:02:00 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/07 12:13:21 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	compute_line_bounds(t_ray *ray)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   global_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:44:08 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/05 11:59:44 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cube3d.h"
+#include "../include/cub3d.h"
 
 static int	check_commands(char *filename)
 {

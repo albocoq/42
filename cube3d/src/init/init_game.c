@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 10:57:23 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/07 11:00:49 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	draw_square(int x, int y, int size, mlx_image_t *img)
 {
@@ -76,7 +76,7 @@ int	init_game(t_map *map)
 		return (1);
 	if (!map->player)
 	{
-		map->player = (t_player *)malloc(sizeof(t_player));
+		map->player = (t_player *)ft_calloc(1, sizeof(t_player));
 		if (!map->player)
 			return (1);
 	}

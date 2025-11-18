@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 10:47:57 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/05 12:46:28 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 13:51:41 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	pad_existing_rows(t_mat *mat, int new_width)
 {
@@ -69,8 +69,10 @@ static void	init_mat(t_mat *mat, char *line)
 int	init_map(t_map *map, int fd)
 {
 	char	*line;
+	int		res;
 
 	line = get_next_line(fd);
+	init_textures(map);
 	while (line != NULL)
 	{
 		if (only_whitespace(line))
@@ -79,7 +81,10 @@ int	init_map(t_map *map, int fd)
 			line = get_next_line(fd);
 			continue ;
 		}
-		if (!init_elements(&map->elements, line))
+		res = init_elements(&map->elements, line);
+		if (res == 2)
+			return (1);
+		if (!res)
 		{
 			free(line);
 			line = get_next_line(fd);

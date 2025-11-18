@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:11:04 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/05 11:17:43 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	handle_key_press(mlx_key_data_t keydata, t_player *player)
 {
@@ -26,9 +26,9 @@ static void	handle_key_press(mlx_key_data_t keydata, t_player *player)
 		player->left_rotate = true;
 	else if (keydata.key == MLX_KEY_RIGHT)
 		player->right_rotate = true;
-	else if (keydata.key == 107)
+	else if (keydata.key == MLX_KEY_KP_ADD)
 		player->key_plus = true;
-	else if (keydata.key == 109)
+	else if (keydata.key == MLX_KEY_KP_SUBTRACT)
 		player->key_minus = true;
 }
 
@@ -46,9 +46,9 @@ static void	handle_key_released(mlx_key_data_t keydata, t_player *player)
 		player->left_rotate = false;
 	else if (keydata.key == MLX_KEY_RIGHT)
 		player->right_rotate = false;
-	else if (keydata.key == 107)
+	else if (keydata.key == MLX_KEY_KP_ADD)
 		player->key_plus = false;
-	else if (keydata.key == 109)
+	else if (keydata.key == MLX_KEY_KP_SUBTRACT)
 		player->key_minus = false;
 }
 

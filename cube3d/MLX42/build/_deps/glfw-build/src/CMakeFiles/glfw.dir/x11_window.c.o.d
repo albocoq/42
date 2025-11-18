@@ -1,9 +1,9 @@
 _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_window.c.o: \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/x11_window.c \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/x11_window.c \
  /usr/include/stdc-predef.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/internal.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-build/src/glfw_config.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/../include/GLFW/glfw3.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/internal.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-build/src/glfw_config.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/../include/GLFW/glfw3.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -21,7 +21,7 @@ _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_window.c.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/x11_platform.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/x11_platform.h \
  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h \
@@ -102,7 +102,7 @@ _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_window.c.o: \
  /usr/include/X11/extensions/XInput2.h /usr/include/X11/extensions/XI2.h \
  /usr/include/X11/extensions/Xge.h /usr/include/X11/extensions/Xfixes.h \
  /usr/include/X11/extensions/xfixeswire.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/posix_thread.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/posix_thread.h \
  /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
@@ -116,12 +116,12 @@ _deps/glfw-build/src/CMakeFiles/glfw.dir/x11_window.c.o: \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/posix_time.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/xkb_unicode.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/glx_context.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/egl_context.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/osmesa_context.h \
- /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src/linux_joystick.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/posix_time.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/xkb_unicode.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/glx_context.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/egl_context.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/osmesa_context.h \
+ /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src/linux_joystick.h \
  /usr/include/linux/input.h /usr/include/x86_64-linux-gnu/sys/time.h \
  /usr/include/x86_64-linux-gnu/sys/ioctl.h \
  /usr/include/x86_64-linux-gnu/bits/ioctls.h \

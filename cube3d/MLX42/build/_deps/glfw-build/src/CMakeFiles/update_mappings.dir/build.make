@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/albocoq/dev/42/cube3d/MLX42
+CMAKE_SOURCE_DIR = /home/albocoq/dev/42/cub3d/MLX42
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/albocoq/dev/42/cube3d/MLX42/build
+CMAKE_BINARY_DIR = /home/albocoq/dev/42/cub3d/MLX42/build
 
 # Utility rule file for update_mappings.
 
@@ -67,8 +67,8 @@ include _deps/glfw-build/src/CMakeFiles/update_mappings.dir/compiler_depend.make
 include _deps/glfw-build/src/CMakeFiles/update_mappings.dir/progress.make
 
 _deps/glfw-build/src/CMakeFiles/update_mappings:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/albocoq/dev/42/cube3d/MLX42/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Updating gamepad mappings from upstream repository"
-	cd /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src && /usr/bin/cmake -P /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/CMake/GenerateMappings.cmake mappings.h.in mappings.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/albocoq/dev/42/cub3d/MLX42/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Updating gamepad mappings from upstream repository"
+	cd /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src && /usr/bin/cmake -P /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/CMake/GenerateMappings.cmake mappings.h.in mappings.h
 
 update_mappings: _deps/glfw-build/src/CMakeFiles/update_mappings
 update_mappings: _deps/glfw-build/src/CMakeFiles/update_mappings.dir/build.make
@@ -79,10 +79,10 @@ _deps/glfw-build/src/CMakeFiles/update_mappings.dir/build: update_mappings
 .PHONY : _deps/glfw-build/src/CMakeFiles/update_mappings.dir/build
 
 _deps/glfw-build/src/CMakeFiles/update_mappings.dir/clean:
-	cd /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-build/src && $(CMAKE_COMMAND) -P CMakeFiles/update_mappings.dir/cmake_clean.cmake
+	cd /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-build/src && $(CMAKE_COMMAND) -P CMakeFiles/update_mappings.dir/cmake_clean.cmake
 .PHONY : _deps/glfw-build/src/CMakeFiles/update_mappings.dir/clean
 
 _deps/glfw-build/src/CMakeFiles/update_mappings.dir/depend:
-	cd /home/albocoq/dev/42/cube3d/MLX42/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/albocoq/dev/42/cube3d/MLX42 /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src/src /home/albocoq/dev/42/cube3d/MLX42/build /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-build/src /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-build/src/CMakeFiles/update_mappings.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/albocoq/dev/42/cub3d/MLX42/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/albocoq/dev/42/cub3d/MLX42 /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src/src /home/albocoq/dev/42/cub3d/MLX42/build /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-build/src /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-build/src/CMakeFiles/update_mappings.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : _deps/glfw-build/src/CMakeFiles/update_mappings.dir/depend
 

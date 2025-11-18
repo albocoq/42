@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   cub3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 12:00:00 by juanandub         #+#    #+#             */
-/*   Updated: 2025/11/07 12:14:38 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/10 17:07:24 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#ifndef cub3d_H
+# define cub3d_H
 # define WIDTH 1920
 # define HEIGHT 1080
 # define DEBUG 0
@@ -148,6 +148,8 @@ void	move_down(t_map *map, float c, float s, int sp);
 void	move_left(t_map *map, float c, float s, int sp);
 void	move_right(t_map *map, float c, float s, int sp);
 void	move_player(t_player *player, t_map *map);
+void	increase_speed(t_player *p);
+void	decrease_speed(t_player *p);
 
 /* Checkers */
 int		check_inputs(t_map *map);
@@ -199,8 +201,11 @@ void	sample_tex_rgba(const mlx_texture_t *tx, int u, int v,
 void	shade_if_needed(uint8_t rgba[4], const t_ray *ray);
 
 /* Textures */
+
+void	init_textures_defaults(t_textures *t);
 int		load_textures(t_map *map);
 void	destroy_textures(t_map *map);
+void	init_textures(t_map *map);
 
 int		get_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 int		color_rgba(char *s);

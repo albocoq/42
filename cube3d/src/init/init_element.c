@@ -6,7 +6,7 @@
 /*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 10:44:27 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/18 13:54:33 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/11/25 14:10:25 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ static int	handle_texture(t_elements *elements, char *line)
 	if (!tmp)
 		return (0);
 	if (assign_texture(elements, line, tmp) != 0)
+	{
+		free(tmp);
 		return (2);
+	}
 	return (0);
 }
 
@@ -71,13 +74,13 @@ static int	handle_color(t_elements *elements, char *line)
 	if (line[0] == 'F')
 	{
 		if (elements->f)
-			free(elements->f);
+			return (printf("Error: Duplicate key F founded\n"), free(tmp), 2);
 		elements->f = tmp;
 	}
 	else
 	{
 		if (elements->c)
-			free(elements->c);
+			return (printf("Error: Duplicate key C founded\n"), free(tmp), 2);
 		elements->c = tmp;
 	}
 	return (0);

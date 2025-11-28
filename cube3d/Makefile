@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+         #
+#    By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 21:50:08 by albocoq           #+#    #+#              #
-#    Updated: 2025/11/07 11:39:12 by albocoq          ###   ########.fr        #
+#    Updated: 2025/11/18 11:12:55 by aboussem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = cube3d
+NAME = cub3d
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
@@ -29,17 +29,9 @@ MLX_LIB = $(LIBMLX_BUILD)/libmlx42.a
 GLFW_LIB = $(LIBMLX_BUILD)/_deps/glfw-build/src/libglfw3.a
 LIBS		= $(MLX_LIB) $(GLFW_LIB) -ldl -pthread -lm
 
-XF86VM_PRESENT := $(wildcard /usr/lib*/libXxf86vm.* /usr/lib*/libXxf86vm.so*)
-ifeq ($(XF86VM_PRESENT),)
-$(warning libXxf86vm not found on the system. If link fails, install the Xxf86vm development package (e.g. libxxf86vm-dev).)
-X11_EXTRA_LIBS :=
-else
-X11_EXTRA_LIBS := -lXxf86vm
-endif
-
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS =	$(SRCS_DIR)/cube3d.c \
+SRCS =	$(SRCS_DIR)/cub3d.c \
 				$(SRCS_DIR)/init/init_map.c \
 				$(SRCS_DIR)/init/init_game.c \
 				$(SRCS_DIR)/init/init_player.c \
@@ -85,21 +77,21 @@ $(NAME): $(LIBFT) $(MLX_LIB) $(OBJS)
 $(MLX_LIB):
 	@cmake $(LIBMLX) -B $(LIBMLX_BUILD)
 	@$(MAKE) -C $(LIBMLX_BUILD) -j4
-	@echo "cube3d compilado correctamente!"
+	@echo "cub3d compilation completed!"
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(INCS_DIR)/cube3d.h
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(INCS_DIR)/cub3d.h
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -I$(INCS_DIR) -I$(LIBFT_INCS_DIR) -c $< -o $@
 
 clean:
-	@echo "Limpiando archivos objeto..."
+	@echo "Cleaning objects..."
 	@$(RM) -r $(OBJS_DIR)
 
 fclean: clean
-	@echo "Limpiando ejecutable..."
+	@echo "Cleaning executable file..."
 	@$(RM) $(NAME)
 
 re: fclean all

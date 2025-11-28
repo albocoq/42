@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_background.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:48:26 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/06 12:04:28 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/25 12:08:47 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	init_scanline(uint32_t *p32, int width, uint32_t color)
 {
@@ -36,7 +36,7 @@ static void	fill_half_with_color(char *base, int width, int half_rows,
 	y = 0;
 	while (y < half_rows)
 	{
-		memcpy(base + (size_t)y * (width * 4), scanline, width * 4);
+		ft_memcpy(base + (size_t)y * (width * 4), scanline, width * 4);
 		++y;
 	}
 	free(scanline);

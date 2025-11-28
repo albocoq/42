@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   global_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:44:08 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/05 11:59:44 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/25 14:18:59 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cube3d.h"
+#include "../include/cub3d.h"
+#include "cub3d.h"
 
 static int	check_commands(char *filename)
 {
@@ -53,25 +54,39 @@ int	global_check(char *filename, t_map *map)
 {
 	int	fd;
 
-	map->mat.width = 0;
-	map->mat.height = 0;
-	map->mat.mat = NULL;
-	map->elements.no = NULL;
-	map->elements.so = NULL;
-	map->elements.we = NULL;
-	map->elements.ea = NULL;
-	map->elements.f = NULL;
-	map->elements.c = NULL;
-	if (check_commands(filename) != 0)
+    init_map_elements(map);
+    if (check_commands(filename) != 0)
 		return (1);
 	fd = check_existence_file(filename);
 	if (fd < 0)
 		return (1);
 	if (init_map(map, fd) != 0)
+	{
+		get_next_line(-1);
+		close(fd);
 		return (1);
+	}
 	if (check_inputs(map) != 0)
+	{
+		get_next_line(-1);
+		close(fd);
 		return (1);
+	}
 	if (fd > 0)
 		close(fd);
+	get_next_line(-1);
 	return (0);
+}
+
+void init_map_elements(t_map *map)
+{
+    map->mat.width = 0;
+    map->mat.height = 0;
+    map->mat.mat = NULL;
+    map->elements.no = NULL;
+    map->elements.so = NULL;
+    map->elements.we = NULL;
+    map->elements.ea = NULL;
+    map->elements.f = NULL;
+    map->elements.c = NULL;
 }

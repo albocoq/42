@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:29:31 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/07 11:43:18 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/25 14:11:04 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	free_elements(t_elements *elements)
 {
@@ -36,7 +36,10 @@ void	free_all(t_map *map)
 	if (!map)
 		return ;
 	if (map->mlx)
+	{
+		free_mlxtexture(map->textures, map->mlx);
 		mlx_terminate(map->mlx);
+	}
 	if (map->player)
 		free(map->player);
 	if (map->mat.mat)
@@ -61,4 +64,24 @@ void	clear_image(t_map *map)
 	total_pixels = (int)map->img_game->width * (int)map->img_game->height
 		* (int) sizeof(int32_t);
 	ft_memset(map->img_game->pixels, 0, total_pixels);
+}
+
+void	free_mlxtexture(t_textures textures, mlx_t *mlx)
+{
+	if (textures.no_tx)
+		mlx_delete_texture(textures.no_tx);
+	if (textures.so_tx)
+		mlx_delete_texture(textures.so_tx);
+	if (textures.we_tx)
+		mlx_delete_texture(textures.we_tx);
+	if (textures.ea_tx)
+		mlx_delete_texture(textures.ea_tx);
+	if (textures.no_img)
+		mlx_delete_image(mlx, textures.no_img);
+	if (textures.so_img)
+		mlx_delete_image(mlx, textures.so_img);
+	if (textures.we_img)
+		mlx_delete_image(mlx, textures.we_img);
+	if (textures.ea_img)
+		mlx_delete_image(mlx, textures.ea_img);
 }

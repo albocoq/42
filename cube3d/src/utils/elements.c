@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   elements.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:00:41 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/05 11:00:50 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 13:54:38 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 char	*dup_trim_ws(const char *s)
 {

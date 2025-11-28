@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:08:59 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/07 12:14:14 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/25 12:15:32 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 int	only_whitespace(const char *str)
 {
@@ -47,17 +47,24 @@ float	distance(float dx, float dy)
 
 int	get_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	return ((r << 24) | (g << 16) | (b << 8) | a);
+	return (((int)r << 24) | ((int)g << 16) | ((int)b << 8) | (int)a);
 }
 
 int	color_rgba(char *s)
 {
 	char		**split_color;
+	char		*trimmed;
 	uint8_t		r;
 	uint8_t		g;
 	uint8_t		b;
 
-	split_color = ft_split(s, ',');
+	if (!s)
+		return (0);
+	trimmed = dup_trim_ws(s);
+	if (!trimmed)
+		return (0);
+	split_color = ft_split(trimmed, ',');
+	free(trimmed);
 	if (!split_color || !split_color[0] || !split_color[1] || !split_color[2])
 	{
 		free_splits(split_color);
@@ -67,5 +74,5 @@ int	color_rgba(char *s)
 	g = (uint8_t)ft_atoi(split_color[1]);
 	b = (uint8_t)ft_atoi(split_color[2]);
 	free_splits(split_color);
-	return (get_rgba(r, g, b, 255));
+	return (get_rgba_bg(r, g, b, 255));
 }

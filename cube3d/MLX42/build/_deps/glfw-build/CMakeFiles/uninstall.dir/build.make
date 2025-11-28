@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/albocoq/dev/42/cube3d/MLX42
+CMAKE_SOURCE_DIR = /home/albocoq/dev/42/cub3d/MLX42
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/albocoq/dev/42/cube3d/MLX42/build
+CMAKE_BINARY_DIR = /home/albocoq/dev/42/cub3d/MLX42/build
 
 # Utility rule file for uninstall.
 
@@ -67,7 +67,7 @@ include _deps/glfw-build/CMakeFiles/uninstall.dir/compiler_depend.make
 include _deps/glfw-build/CMakeFiles/uninstall.dir/progress.make
 
 _deps/glfw-build/CMakeFiles/uninstall:
-	cd /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-build && /usr/bin/cmake -P /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-build/cmake_uninstall.cmake
+	cd /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-build && /usr/bin/cmake -P /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-build/cmake_uninstall.cmake
 
 uninstall: _deps/glfw-build/CMakeFiles/uninstall
 uninstall: _deps/glfw-build/CMakeFiles/uninstall.dir/build.make
@@ -78,10 +78,10 @@ _deps/glfw-build/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : _deps/glfw-build/CMakeFiles/uninstall.dir/build
 
 _deps/glfw-build/CMakeFiles/uninstall.dir/clean:
-	cd /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-build && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-build && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : _deps/glfw-build/CMakeFiles/uninstall.dir/clean
 
 _deps/glfw-build/CMakeFiles/uninstall.dir/depend:
-	cd /home/albocoq/dev/42/cube3d/MLX42/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/albocoq/dev/42/cube3d/MLX42 /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-src /home/albocoq/dev/42/cube3d/MLX42/build /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-build /home/albocoq/dev/42/cube3d/MLX42/build/_deps/glfw-build/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/albocoq/dev/42/cub3d/MLX42/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/albocoq/dev/42/cub3d/MLX42 /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-src /home/albocoq/dev/42/cub3d/MLX42/build /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-build /home/albocoq/dev/42/cub3d/MLX42/build/_deps/glfw-build/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : _deps/glfw-build/CMakeFiles/uninstall.dir/depend
 

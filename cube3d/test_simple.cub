@@ -1,13 +1,10 @@
-NO ./src/textures/bluestone.xpm
-SO ./src/textures/orange_brick.xpm
-WE ./src/textures/purplestone.xpm
-EA ./src/textures/greystone.xpm
+NO ./src/textures/img_no.png
+SO ./src/textures/backRoom2.png
+WE ./src/textures/img_we.png
+EA ./src/textures/backRoom.png
 
-
-
-F 220,100,0
-C 225,30,0
-
+F 220,220,220
+C 255,255,255
 
 111111111111111111
 100000000000000001

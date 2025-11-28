@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:02:48 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/11/05 12:44:03 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	init_values_player(t_player *player)
 {
 	player->angle = PI / 2;
-	player->speed = 4;
+	player->speed = DEFAULT_SPEED;
 	player->key_up = false;
 	player->key_down = false;
 	player->key_left = false;

@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 10:47:57 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/05 12:46:28 by albocoq          ###   ########.fr       */
+/*   Updated: 2025/11/25 12:17:01 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
+
+int	get_rgba_bg(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+	return (((int)r << 0) | ((int)g << 8) | ((int)b << 16) | (int)(a << 24));
+}
 
 static void	pad_existing_rows(t_mat *mat, int new_width)
 {
@@ -66,26 +71,36 @@ static void	init_mat(t_mat *mat, char *line)
 	mat->mat[mat->height] = NULL;
 }
 
+static int	process_line(t_map *map, char *line)
+{
+	int	res;
+
+	if (only_whitespace(line))
+		return (0);
+	res = init_elements(&map->elements, line);
+	if (res == 2)
+		return (2);
+	if (!res)
+		return (0);
+	init_mat(&map->mat, line);
+	return (1);
+}
+
 int	init_map(t_map *map, int fd)
 {
 	char	*line;
+	int		res;
 
 	line = get_next_line(fd);
+	init_textures(map);
 	while (line != NULL)
 	{
-		if (only_whitespace(line))
+		res = process_line(map, line);
+		if (res == 2)
 		{
 			free(line);
-			line = get_next_line(fd);
-			continue ;
+			return (1);
 		}
-		if (!init_elements(&map->elements, line))
-		{
-			free(line);
-			line = get_next_line(fd);
-			continue ;
-		}
-		init_mat(&map->mat, line);
 		free(line);
 		line = get_next_line(fd);
 	}

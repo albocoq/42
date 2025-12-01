@@ -6,7 +6,7 @@
 /*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 10:47:57 by albocoq           #+#    #+#             */
-/*   Updated: 2025/12/01 11:26:05 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/12/01 13:15:19 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,18 @@ int	get_rgba_bg(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 
 int	process_line(t_map *map, char *line)
 {
-	int	res;
+	int			res;
+	static int	map_started = 0;
 
-	if (only_whitespace(line))
-	{
-		if (map->mat.height > 0)
-		{
-			printf("Error\nMap error.\n");
-			return (2);
-		}
-		return (0);
-	}
+	if (!map_started)
+		if (only_whitespace(line))
+			return (0);
 	res = init_elements(&map->elements, line);
 	if (res == 2)
 		return (2);
 	if (!res)
 		return (0);
+	map_started = 1;
 	init_mat(&map->mat, line);
 	return (1);
 }

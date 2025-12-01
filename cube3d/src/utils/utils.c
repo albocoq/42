@@ -6,7 +6,7 @@
 /*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:08:59 by albocoq           #+#    #+#             */
-/*   Updated: 2025/12/01 11:26:12 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/12/01 13:14:45 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	only_whitespace(const char *str)
 	while (str[i])
 	{
 		if (ft_isspace(str[i]) == 0)
-				return (0);
+			return (0);
 		i++;
 	}
 	return (1);

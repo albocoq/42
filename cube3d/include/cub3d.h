@@ -6,7 +6,7 @@
 /*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:14:27 by aboussem          #+#    #+#             */
-/*   Updated: 2025/12/01 11:24:12 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/12/01 12:35:39 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ int		check_top_walls(t_mat *mat, int i, int j);
 int		check_mat_is_correct(t_map *map);
 int		checkers(t_map *map);
 int		check_colors(t_elements *elem);
+int		is_space_or_empty(char c);
 
 /* Freeing */
 void	free_splits(char **splits);

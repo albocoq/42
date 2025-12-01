@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 10:32:25 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:44:35 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	init_mlx(t_map *map)
 		map->mlx = mlx_init(WIDTH, HEIGHT, "cub3d albo", true);
 	if (!map->mlx)
 	{
-		printf("Error: MLX initialization failed.\n");
+		printf("Error\n MLX initialization failed.\n");
 		free_all(map);
 		return (1);
 	}

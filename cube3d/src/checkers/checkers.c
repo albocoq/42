@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 11:45:26 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:43:49 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static int	check_elements(t_elements *elements, int i)
 	{
 		if (!paths[i] || paths[i][0] == '\0')
 		{
-			printf("Error: Texture path is missing.\n");
+			printf("Error\n Texture path is missing.\n");
 			return (1);
 		}
 		fd = open(paths[i], O_RDONLY);
 		if (fd < 0)
 		{
-			printf("Error: Texture file <%s> does not exist.\n", paths[i]);
+			printf("Error\n Texture file <%s> does not exist.\n", paths[i]);
 			return (1);
 		}
 		close(fd);
@@ -44,12 +44,12 @@ static int	correct_elements_error(int found_pos_player)
 {
 	if (found_pos_player == 0)
 	{
-		printf("Error: No player starting position found in the map.\n");
+		printf("Error\n No player starting position found in the map.\n");
 		return (1);
 	}
 	else if (found_pos_player > 1)
 	{
-		printf("Error: Multiple player starting positions found in the map.\n");
+		printf("Error\n Multiple player start positions found in the map.\n");
 		return (1);
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 10:57:23 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:46:15 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_square(int x, int y, int size, mlx_image_t *img)
 		j = 0;
 		while (j < size)
 		{
-			mlx_put_pixel(img, x + i, y + j, (uint32_t)0x00FF00FF);
+			mlx_put_pixel(img, x + i, y + j, (uint32_t)0x00FFFFFF);
 			j++;
 		}
 		i++;

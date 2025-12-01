@@ -6,7 +6,7 @@
 /*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 20:02:00 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:47:55 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	compute_tex_x_for_column(const t_map *map, const t_ray *ray,
 		tex_x = 0;
 	if (tex_x >= (int)tx->width)
 		tex_x = (int)tx->width - 1;
-	if (ray->side == 0 && ray->rdx > 0)
+	if (ray->side == 0 && ray->rdx < 0)
 		tex_x = (int)tx->width - tex_x - 1;
-	if (ray->side == 1 && ray->rdy < 0)
+	if (ray->side == 1 && ray->rdy > 0)
 		tex_x = (int)tx->width - tex_x - 1;
 	return (tex_x);
 }

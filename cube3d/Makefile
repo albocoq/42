@@ -6,7 +6,7 @@
 #    By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 21:50:08 by albocoq           #+#    #+#              #
-#    Updated: 2025/11/18 11:12:55 by aboussem         ###   ########.fr        #
+#    Updated: 2025/12/01 10:55:54 by aboussem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS =	$(SRCS_DIR)/cub3d.c \
 				$(SRCS_DIR)/init/init_map.c \
+				$(SRCS_DIR)/init/init_map_utils.c \
+				$(SRCS_DIR)/init/init_mat.c \
 				$(SRCS_DIR)/init/init_game.c \
 				$(SRCS_DIR)/init/init_player.c \
 				$(SRCS_DIR)/init/init_mlx.c \
@@ -44,6 +46,7 @@ SRCS =	$(SRCS_DIR)/cub3d.c \
 				$(SRCS_DIR)/checkers/checkers.c \
 				$(SRCS_DIR)/checkers/checker_mat.c \
 				$(SRCS_DIR)/checkers/checker_mat_walls.c \
+				$(SRCS_DIR)/checkers/checker_colors.c \
 				$(SRCS_DIR)/utils/utils.c \
 				$(SRCS_DIR)/utils/keyhook.c \
 				$(SRCS_DIR)/utils/texture.c \
@@ -58,6 +61,7 @@ SRCS =	$(SRCS_DIR)/cub3d.c \
 				$(SRCS_DIR)/raycast/raycast_setup.c \
 				$(SRCS_DIR)/raycast/raycast_dda.c \
 				$(SRCS_DIR)/raycast/raycast_post.c \
+				
 
 
 OBJS = $(patsubst $(SRCS_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_mat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:01:10 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:43:15 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	char_invalid_character(t_mat *mat)
 					mat->mat[i][j] != ' ' && mat->mat[i][j] != '\n' &&
 					mat->mat[i][j] != '\0')
 			{
-				printf("Error: Invalid character '%c' in map at (%d, %d).\n",
+				printf("Error\n Invalid character '%c' in map at (%d, %d).\n",
 					mat->mat[i][j], i, j);
 				return (1);
 			}

@@ -6,7 +6,7 @@
 /*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:14:27 by aboussem          #+#    #+#             */
-/*   Updated: 2025/11/25 14:18:59 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/12/01 11:24:12 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,9 +138,17 @@ void	init_player(t_player *player, t_map *map);
 int		init_mlx(t_map *map);
 int		init_elements(t_elements *elements, char *line);
 void	move_player(t_player *player, t_map *map);
-int global_check(char *filename, t_map *map);
+int		global_check(char *filename, t_map *map);
 
-void init_map_elements(t_map *map);
+void	init_map_elements(t_map *map);
+
+/* Init Map Utils */
+int		process_map_line(t_map *map, char *line);
+int		process_line(t_map *map, char *line);
+
+/* Init Mat */
+void	pad_existing_rows(t_mat *mat, int new_width);
+void	init_mat(t_mat *mat, char *line);
 
 /* Movement*/
 int		is_wall(t_map *map, int mx, int my);
@@ -160,6 +168,9 @@ int		check_right_walls(t_mat *mat, int i, int j);
 int		check_left_walls(t_mat *mat, int i, int j);
 int		check_bottom_walls(t_mat *mat, int i, int j);
 int		check_top_walls(t_mat *mat, int i, int j);
+int		check_mat_is_correct(t_map *map);
+int		checkers(t_map *map);
+int		check_colors(t_elements *elem);
 
 /* Freeing */
 void	free_splits(char **splits);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_mat_walls.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:02:27 by albocoq           #+#    #+#             */
-/*   Updated: 2025/11/18 11:12:52 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:42:44 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int	check_top_walls(t_mat *mat, int i, int j)
 				i++;
 			if (i >= mat->height || mat->mat[i][j] != '1')
 			{
-				printf("Error: Top row is not properly walled.\n");
+				printf("Error\n Top row is not properly walled.\n");
 				return (1);
 			}
 		}
 		else if (c != '1' && c != '\n')
 		{
-			printf("Error: Top row is not properly walled.\n");
+			printf("Error\n Top row is not properly walled.\n");
 			return (1);
 		}
 		j++;
@@ -59,13 +59,13 @@ int	check_bottom_walls(t_mat *mat, int i, int j)
 				i--;
 			if (i < 0 || mat->mat[i][j] != '1')
 			{
-				printf("Error: Bottom row is not properly walled.\n");
+				printf("Error\n Bottom row is not properly walled.\n");
 				return (1);
 			}
 		}
 		else if (c != '1' && c != '\n')
 		{
-			printf("Error: Bottom row is not properly walled.\n");
+			printf("Error\n Bottom row is not properly walled.\n");
 			return (1);
 		}
 		j++;
@@ -87,13 +87,13 @@ int	check_left_walls(t_mat *mat, int i, int j)
 				j++;
 			if (j >= mat->width || mat->mat[i][j] != '1')
 			{
-				printf("Error: Left column is not properly walled.\n");
+				printf("Error\n Left column is not properly walled.\n");
 				return (1);
 			}
 		}
 		else if (c != '1' && c != '\n')
 		{
-			printf("Error: Left column is not properly walled.\n");
+			printf("Error\n Left column is not properly walled.\n");
 			return (1);
 		}
 		i++;
@@ -115,13 +115,13 @@ int	check_right_walls(t_mat *mat, int i, int j)
 				j--;
 			if (j < 0 || mat->mat[i][j] != '1')
 			{
-				printf("Error: Right column is not properly walled.\n");
+				printf("Error\n Right column is not properly walled.\n");
 				return (1);
 			}
 		}
 		else if (c != '1' && c != '\n')
 		{
-			printf("Error: Right column is not properly walled.\n");
+			printf("Error\n Right column is not properly walled.\n");
 			return (1);
 		}
 		i++;

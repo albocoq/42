@@ -1,10 +1,10 @@
+C 255,255,255
+F 111,111,111
+
 NO ./src/textures/img_no.png
 SO ./src/textures/backRoom2.png
 WE ./src/textures/img_we.png
 EA ./src/textures/backRoom.png
-
-F 220,220,220
-C 255,255,255
 
 111111111111111111
 100000000000000001

@@ -6,7 +6,7 @@
 /*   By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 16:29:55 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/12/01 10:39:33 by aboussem         ###   ########.fr       */
+/*   Updated: 2025/12/02 10:27:22 by aboussem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ static const mlx_texture_t	*pick_wall_texture(const t_map *map,
 	if (side == 0)
 	{
 		if (rdx > 0)
-			return (map->textures.we_tx);
-		else
 			return (map->textures.ea_tx);
+		else
+			return (map->textures.we_tx);
 	}
 	if (rdy > 0)
-		return (map->textures.no_tx);
-	return (map->textures.so_tx);
+		return (map->textures.so_tx);
+	return (map->textures.no_tx);
 }
 
 static const mlx_texture_t	*select_valid_texture(t_map *map, const t_ray *ray)

@@ -1,55 +1,50 @@
 #include "PhoneBook.hpp"
 
+static bool readField(const std::string &fieldName, std::string &out) {
+  std::string prompt = "Please enter the " + fieldName + ": \n";
+  while (true) {
+    std::cout << prompt;
+    if (!std::getline(std::cin, out)) {
+      std::cout << "EOF. Closing the program." << std::endl;
+      return false;
+    }
+    if (!out.empty())
+      return true;
+    std::cout << fieldName << " cannot be empty!\n";
+  }
+}
+
+
 void addCommand(PhoneBook &phone, int &phone_size) {
+  int copy_size = phone_size;
+  static int oldest_index = 0;
+
   if (phone_size >= 8) {
     std::cout << "PhoneBook is full! Oldest contact will be replaced.\n";
-    phone_size = 0;
+
+    copy_size = oldest_index;
+    oldest_index++;
+
+    if (oldest_index >= 8)
+      oldest_index = 0;
   }
 
-  std::cout << "Please enter the First Name: \n";
-  std::getline(std::cin, phone.contact[phone_size].firstName);
-  while (phone.contact[phone_size].firstName.empty())
-  {
-    std::cout << "First name cannot be empty!\n";
-    std::cout << "Please enter the First Name: \n";
-    std::getline(std::cin, phone.contact[phone_size].firstName);
-  }
+  Contact &c = phone.contact[copy_size];
+  std::string fn, ln, nn, pn, ds;
 
-  std::cout << "Please enter the Last Name: \n";
-  std::getline(std::cin, phone.contact[phone_size].lastName);
-  while (phone.contact[phone_size].lastName.empty())
-  {
-    std::cout << "Last name cannot be empty!\n";
-    std::cout << "Please enter the Last Name: \n";
-    std::getline(std::cin, phone.contact[phone_size].lastName);
-  }
+  if (!readField("First Name", fn)) return;
+  if (!readField("Last Name", ln)) return;
+  if (!readField("NickName", nn)) return;
+  if (!readField("Phone Number", pn)) return;
+  if (!readField("Darkest Secret", ds)) return;
 
-  std::cout << "Please enter the NickName: \n";
-  std::getline(std::cin, phone.contact[phone_size].nickname);
-  while (phone.contact[phone_size].nickname.empty())
-  {
-    std::cout << "Nickname cannot be empty!\n";
-    std::cout << "Please enter the NickName: \n";
-    std::getline(std::cin, phone.contact[phone_size].nickname);
-  }
-
-  std::cout << "Please enter the Phone Number: \n";
-  std::getline(std::cin, phone.contact[phone_size].phoneNumber);
-  while (phone.contact[phone_size].phoneNumber.empty())
-  {
-    std::cout << "Phone number cannot be empty!\n";
-    std::cout << "Please enter the Phone number: \n";
-    std::getline(std::cin, phone.contact[phone_size].phoneNumber);
-  }
-
-  std::cout << "Please enter the Darkest Secret: \n";
-  std::getline(std::cin, phone.contact[phone_size].darkestSecret);
-  while (phone.contact[phone_size].darkestSecret.empty()) {
-    std::cout << "Darkest secret cannot be empty!\n";
-    std::cout << "Please enter the Darkest secret: \n";
-    std::getline(std::cin, phone.contact[phone_size].darkestSecret);
-  }
+  c.setFirstName(fn);
+  c.setLastName(ln);
+  c.setNickName(nn);
+  c.setPhoneNumber(pn);
+  c.setDarkestSecret(ds);
 
   std::cout << "User added to your contacts\n";
-  phone_size++;
+  if (phone_size < 8)
+    phone_size++;
 }

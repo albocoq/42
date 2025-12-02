@@ -4,12 +4,25 @@
 #include <iomanip>
 
 class Contact {
-  public:
+  private:
     std::string firstName;
     std::string lastName;
     std::string nickname;
     std::string phoneNumber;
     std::string darkestSecret;
+  public:
+    void setFirstName(const std::string& fn);
+    void setLastName(const std::string& ln);
+    void setNickName(const std::string& nn);
+    void setPhoneNumber(const std::string& pn);
+    void setDarkestSecret(const std::string& ds);
+
+    std::string getFirstName();
+    std::string getLastName();
+    std::string getNickName();
+    std::string getPhoneNumber();
+    std::string getDarkestSecret();
+
 };
 
 class PhoneBook {

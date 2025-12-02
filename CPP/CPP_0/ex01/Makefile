@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: albocoq <albocoq@student.42.fr>            +#+  +:+       +#+         #
+#    By: aboussem <aboussem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/05 15:25:52 by aboussem          #+#    #+#              #
-#    Updated: 2025/11/14 11:18:35 by albocoq          ###   ########.fr        #
+#    Updated: 2025/12/02 10:55:58 by aboussem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ BLUE    = \033[1;34m
 YELLOW  = \033[1;33m
 RESET   = \033[0m
 
-SRCS    = $(NAME).cpp AddCommand.cpp SearchCommand.cpp
+SRCS    = $(NAME).cpp AddCommand.cpp SearchCommand.cpp Utils.cpp
 OBJS    = $(SRCS:.cpp=.o)
 
 all: $(NAME)

@@ -11,9 +11,14 @@ int main()
   std::cout << dog->getType() << " " << std::endl;
   std::cout << cat->getType() << " " << std::endl;
   std::cout << wrongCat->getType() << " " << std::endl;
+
   cat->makeSound();
   dog->makeSound();
   random->makeSound();
-
   wrongCat->makeSound();
+
+  delete random;
+  delete dog;
+  delete cat;
+  delete wrongCat;
 }

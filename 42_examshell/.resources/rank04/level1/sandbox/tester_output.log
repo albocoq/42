@@ -1,0 +1,7 @@
+/usr/bin/ld: /tmp/ccbmss58.o: in function `main':
+main.c:(.text+0x82): undefined reference to `sandbox'
+/usr/bin/ld: main.c:(.text+0xc6): undefined reference to `sandbox'
+/usr/bin/ld: main.c:(.text+0x10a): undefined reference to `sandbox'
+collect2: error: ld returned 1 exit status
+[31m[1mCOMPILATION FAILED(B[0m
+[31mYour code did not compile. Please fix the errors above.(B[m

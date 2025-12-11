@@ -12,6 +12,25 @@
 
 #include "cub3d.h"
 
+
+void my_scrollhook(double xdelta, double ydelta, void* param)
+{
+	(void)xdelta;
+	t_map		*data;
+	t_player	*player;
+
+	data = param;
+	player = data->player;
+
+	if (ydelta > 0)
+		player->key_plus = true;
+	else if (ydelta < 0)
+		player->key_minus = true;
+	
+	player->key_minus = false;
+	player->key_plus = false;
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	*map;
@@ -27,6 +46,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	mlx_key_hook(map->mlx, my_keyhook, map);
+	mlx_scroll_hook(map->mlx, &my_scrollhook, map);
 	mlx_loop_hook(map->mlx, draw_loop, map);
 	mlx_loop(map->mlx);
 	free_all(map);

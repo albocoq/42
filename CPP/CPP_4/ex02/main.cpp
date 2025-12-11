@@ -2,7 +2,7 @@
 
 int main()
 {
-  Animal a; // ejemplo que ya no se puede
+  // Animal a; // ejemplo que ya no se puede
 
   const Animal* animals[10];
 

@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-Cat::Cat(): _type("Cat") {
+Cat::Cat(): Animal("Cat") {
   std::cout << "A " << _type << " has been created." << std::endl;
 
   _brain = new Brain();

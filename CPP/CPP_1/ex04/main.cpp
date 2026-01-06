@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
   std::ifstream f(filename);
   if (!f.is_open()) {
     std::cout << "cannot open or file " << filename << " does not exist." << std::endl;
-    return 1;
+    return 1; 
   }
 
   std::ofstream outfile;

@@ -1,24 +1,27 @@
 #include "Bureaucrat.hpp"
 
 int main() {
+    try {
+        Bureaucrat A("salade", 1000);
+        std::cout << A.getGrade() << " " << A.getName() << std::endl;
+    } catch (const std::invalid_argument& e) {
+        std::cout << e.what() << std::endl;
+        return 1;
+    }
 
+    try {
+        Bureaucrat A("salade", 10);
+        std::cout << A.getGrade() << " " << A.getName() << std::endl;
+    } catch (const std::invalid_argument& e) {
+        std::cout << e.what() << std::endl;
+        return 1;
+    }
 
-  try {
-    Bureaucrat A("carlos", 1);
-
-    A.decrementGrade();
-
-    std::cout << A.getName() << " new grade is " << A.getGrade() << std::endl;
-
-    A.incrementGrade();
-
-    std::cout << A.getName() << " new grade is " << A.getGrade() << std::endl;
-
-    A.incrementGrade();
-
-    std::cout << A.getName() << " new grade is " << A.getGrade() << std::endl;
-
-  } catch (std::exception & e) {
-    std::cout << e.what() << std::endl;
-  }
+    try {
+        Bureaucrat A("salade", -10);
+        std::cout << A.getGrade() << " " << A.getName() << std::endl;
+    } catch (const std::invalid_argument& e) {
+        std::cout << e.what() << std::endl;
+        return 1;
+    }
 }

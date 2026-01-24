@@ -6,7 +6,7 @@
 #    By: albocoq <albocoq@student.42.fr>         /home/albocoq/dev/42/CPP/CPP_2/Makefile   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/05 15:25:52 by aboussem          #+#    #+#              #
-#    Updated: 2025/11/11 14:40:22 by albocoq          ###   ########.fr        #
+#    Updated: 2025/11/11 14:40:22 by albocoq          ###   ########.fr        #a
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ YELLOW  = \033[1;33m
 RESET   = \033[0m
 
 SRCS    = main.cpp Bureaucrat.cpp
-
 OBJS    = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -45,3 +44,4 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
+

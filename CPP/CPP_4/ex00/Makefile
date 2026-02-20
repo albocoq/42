@@ -10,10 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = polymorphism
+NAME    = Animal
 CC      = c++
 CFLAGS  = -Wall -Werror -Wextra -std=c++98
 RM      = rm -f
+OBJ_DIR = obj
 
 RED     = \033[1;31m
 GREEN   = \033[1;32m
@@ -21,23 +22,26 @@ BLUE    = \033[1;34m
 YELLOW  = \033[1;33m
 RESET   = \033[0m
 
-SRCS    = main.cpp polymorphism.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
-OBJS    = $(SRCS:.cpp=.o)
+SRCS    = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp WrongDog.cpp
+OBJS    = $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(NAME): $(OBJ_DIR) $(OBJS)
 	@echo "$(YELLOW)Création de $(NAME)...$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 	@echo "$(GREEN)$(NAME) créé avec succès!$(RESET)"
 
-%.o: %.cpp %.hpp
+$(OBJ_DIR)/%.o: %.cpp
 	@echo "$(BLUE)Compilation de $<...$(RESET)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "$(RED)Suppression des fichiers objets...$(RESET)"
-	@$(RM) $(OBJS)
+	@echo "$(RED)Suppression du dossier obj...$(RESET)"
+	@$(RM) -r $(OBJ_DIR)
 
 fclean: clean
 	@echo "$(RED)Suppression de $(NAME)...$(RESET)"

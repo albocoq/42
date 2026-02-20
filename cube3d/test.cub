@@ -4,8 +4,8 @@ WE ./src/textures/img_we.png
 EA ./src/textures/img_ea.png
 
 F 0,100,140
-C 125, 231, 255
+C 125, 231, 256
 
 111
-1N1
+1E1
 11

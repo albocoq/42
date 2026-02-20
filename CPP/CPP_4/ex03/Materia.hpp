@@ -9,7 +9,9 @@ class AMateria
     std::string _type;
   public:
     AMateria(std::string const & type);
+    AMateria(const AMateria &other);
     virtual ~AMateria();
+    AMateria &operator=(const AMateria &other);
     std::string const & getType() const;
     virtual AMateria* clone() const = 0;
     virtual void use(ICharacter& target);
@@ -44,7 +46,9 @@ class Character: public ICharacter {
 class Ice: public AMateria {
   public:
     Ice();
+    Ice(const Ice &other);
     ~Ice();
+    Ice &operator=(const Ice &other);
     void use(ICharacter& target);
     AMateria* clone() const;
 };
@@ -52,7 +56,9 @@ class Ice: public AMateria {
 class Cure: public AMateria {
   public:
     Cure();
+    Cure(const Cure &other);
     ~Cure();
+    Cure &operator=(const Cure &other);
     void use(ICharacter& target);
     AMateria* clone() const;
 };

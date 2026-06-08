@@ -1,0 +1,52 @@
+# Compilación
+*.o
+*.a
+*.so
+*.dylib
+obj/
+build/
+bin/
+*.d
+
+# Ejecutables
+minishell
+pipex
+push_swap
+so_long
+cub3d
+philo
+philo_bonus
+ircserv
+megaphone
+PhoneBook
+RPN
+PmergeMe
+BitcoinExchange
+
+# Repositorios git anidados
+**/.git/
+
+# IDE y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Depuración y temporales
+*.dSYM/
+vgcore.*
+core
+*.log
+*.tmp
+out.txt
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+
+# Historial de shell
+.history

@@ -1,9 +1,0 @@
-{
-  "files.associations": {
-    "libft.h": "c",
-    "stdio.h": "c",
-    "cube3d.h": "c",
-    "mlx42.h": "c"
-  },
-  "cmake.sourceDirectory": "/home/albocoq/dev/42/cube3d/MLX42"
-}

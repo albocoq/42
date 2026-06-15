@@ -1,32 +1,39 @@
-# 42 — Portfolio de proyectos
+# 42 — Project Portfolio
 
-Repositorio personal con los proyectos del cursus de [42](https://www.42.fr). Cada carpeta es un proyecto independiente con su propio `README.md`, `Makefile` y código fuente.
+Personal repository containing my projects from the 42 curriculum. Each folder is an independent project with its own `README.md`, `Makefile`, and source code.
 
-## Estructura por módulos
+## 🌟 Featured Projects
 
-| Módulo | Proyecto | Lenguaje | Descripción |
-|--------|----------|----------|-------------|
-| — | [Born2beRoot](Born2beRoot/) | Sysadmin | Configuración de una máquina virtual segura |
-| Common | [libft](libft/) | C | Biblioteca de funciones tipo `libc` |
-| Common | [ft_printf](ft_printf/) | C | Implementación de `printf` |
-| Common | [get_next_line](get_next_line/) | C | Lectura línea a línea desde un descriptor |
-| 1 | [philosopher](philosopher/) | C | Problema de los filósofos con hilos y mutexes |
-| 2 | [push_swap](push_swap/) | C | Ordenación de pilas con operaciones limitadas |
-| 2 | [pipex](pipex/) | C | Tuberías y procesos con `fork` / `exec` |
-| 2 | [so_long](so_long/) | C | Juego 2D con gráficos (MLX42) |
-| 2 | [cube3d](cube3d/) | C | Motor de raycasting 3D (Cub3D) |
-| 3 | [minishell](minishell/) | C | Intérprete de comandos tipo Bash |
-| 3 | [ft_irc](ft_irc/) | C++98 | Servidor IRC con sockets no bloqueantes |
-| Bonus | [NetPractice](NetPractice/) | — | Ejercicios de subredes IP |
-| CPP | [CPP](CPP/) | C++98 | Módulos 00–09 de C++ orientado a objetos |
+*   **[minishell](./minishell)** (C): A lightweight Bash-like command interpreter. **Focus:** Process creation (`fork`, `execve`), file descriptors, pipes, and signal handling.
+*   **[cube3d](./cube3d)** (C): A 3D raycasting engine inspired by Wolfenstein 3D. **Focus:** Raycasting math, graphics rendering with MLX42, and event handling.
+*   **[ft_irc](./ft_irc)** (C++98): An IRC server using non-blocking sockets. **Focus:** Object-Oriented Programming (OOP), network programming, and multiplexing (`poll`/`select`).
 
-## Convenciones del repositorio
+---
 
-- **README.md** en cada proyecto: qué es el proyecto y qué se aprendió.
+## 📂 Curriculum Structure
 
-## Compilación rápida
+| Module | Project | Language | Description |
+| :--- | :--- | :--- | :--- |
+| — | [Born2beRoot](./Born2beRoot) | Sysadmin | Secure virtual machine configuration |
+| Common | [libft](./libft) | C | Custom `libc` functions library |
+| Common | [ft_printf](./ft_printf) | C | Implementation of `printf` |
+| Common | [get_next_line](./get_next_line) | C | Line-by-line file reading from a file descriptor |
+| 1 | [philosopher](./philosopher) | C | Dining philosophers problem (threads & mutexes) |
+| 2 | [push_swap](./push_swap) | C | Stack sorting algorithm with limited operations |
+| 2 | [pipex](./pipex) | C | Pipes and process management (`fork` / `exec`) |
+| 2 | [so_long](./so_long) | C | 2D graphic game (MLX42) |
+| 2 | [cube3d](./cube3d) | C | 3D Raycasting engine (Cub3D) |
+| 3 | [minishell](./minishell) | C | Bash-like command interpreter |
+| 3 | [ft_irc](./ft_irc) | C++98 | IRC server with non-blocking sockets |
+| Bonus | [NetPractice](./NetPractice) | — | IP subnetting exercises |
+| CPP | [CPP](./CPP) | C++98 | Object-Oriented C++ modules 00-09 |
+
+## 🛠️ Repository Conventions
+
+*   **README.md** in each project: explains what the project is and the core concepts learned.
+
+## 🚀 Quick Compilation
 
 ```bash
-cd <proyecto>
+cd <project_folder>
 make
-```
